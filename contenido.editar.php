@@ -46,6 +46,7 @@ $seleccionClasificaciones = $clasificacion->listar();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,60 +56,58 @@ $seleccionClasificaciones = $clasificacion->listar();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Contenido</title>
 </head>
+
 <body>
 
-<?php require "./componentes/nav.php"; ?>
+    <?php require "./componentes/nav.php"; ?>
     <div class="container mt-6">
 
         <form method="post">
             <input type="hidden" name="idcontenido" value="<?php echo $contenido->idcontenido ?>">
             <label class="mt-1" for="idclasificacion">Clasificacion</label>
-            <div class="form-floating mb-2 mt-3">                
+            <div class="form-floating mb-2 mt-3">
                 <select name="idclasificacion">
                     <?php
-                        foreach ($seleccionClasificaciones as $key => $value) {
-                            $selected = "";
-                            if ($value["idclasificacion"] == $idclasificacion)  {
-                                $selected = "selected";
-                            }
-                            echo "<option value='".$value["idclasificacion"]."' ".$selected.">".$value["nombre"]."</option>";
+                    foreach ($seleccionClasificaciones as $key => $value) {
+                        $selected = "";
+                        if ($value["idclasificacion"] == $idclasificacion) {
+                            $selected = "selected";
                         }
-                    ?>  
-                </select>            
+                        echo "<option value='" . $value["idclasificacion"] . "' " . $selected . ">" . $value["nombre"] . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <input type="hidden" name="autor_idusuario" value="<?php $contenido->autor_idusuario ?>">
             <div class="form-floating mb-2">
-                <input type="text" maxlength="255" class="form-control" id="imagen" name="imagen" required placeholder=""
-                    value="<?php echo $contenido->imagen ?>">
+                <input type="text" maxlength="255" class="form-control" id="imagen" name="imagen" required placeholder="" value="<?php echo $contenido->imagen ?>">
                 <label for="imagen">imagen</label>
             </div>
             <div class="form-floating mb-2">
-                <input type="text" maxlength="200" class="form-control" id="titulo" name="titulo" required placeholder=""
-                    value="<?php echo $contenido->titulo ?>">
+                <input type="text" maxlength="200" class="form-control" id="titulo" name="titulo" required placeholder="" value="<?php echo $contenido->titulo ?>">
                 <label for="titulo">titulo</label>
             </div>
 
             <div class="form-floating mb-2">
-             <textarea type="text" class="form-control" style="width: 100%; height: 15rem; border: 1px solid #cecdcd; 
-             border-radius: 3px;" id="subtitulo" name="subtitulo" required placeholder=""
-                    value="<?php echo $contenido->contenido ?>"><?php echo $contenido->subtitulo ?></textarea>
-                    <label for="subtitulo">subtitulo</label>
-               
+                <textarea type="text" class="form-control" style="width: 100%; height: 15rem; border: 1px solid #cecdcd; 
+             border-radius: 3px;" id="subtitulo" name="subtitulo" required placeholder="" value="<?php echo $contenido->contenido ?>"><?php echo $contenido->subtitulo ?></textarea>
+                <label for="subtitulo">subtitulo</label>
+
             </div>
             <div class="form-floating mb-2">
-             <textarea type="text" class="form-control" style="width: 100%; height: 20rem; border: 1px solid #cecdcd; 
-             border-radius: 3px;" id="contenido" name="contenido" required placeholder=""
-                    value="<?php echo $contenido->contenido ?>"><?php echo $contenido->contenido ?></textarea>
-                    <label for="contenido">contenido</label>
-               
+                <textarea type="text" class="form-control" style="width: 100%; height: 20rem; border: 1px solid #cecdcd; 
+             border-radius: 3px;" id="contenido" name="contenido" required placeholder="" value="<?php echo $contenido->contenido ?>"><?php echo $contenido->contenido ?></textarea>
+                <label for="contenido">contenido</label>
+
             </div>
             <div class="form-floating mt-2">
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <button href="listar.php" class="btn btn-primary">Cancelar</button>
+                <a href="listar.php" class="btn btn-primary">Cancelar</a>
             </div>
         </form>
     </div>
 
     <?php require "./componentes/footer.php"; ?>
 </body>
+
 </html>
